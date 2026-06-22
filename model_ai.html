@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр модели</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="index_ai.html" class="btn">← Назад</a>
+        <h1 id="title">Модель</h1>
+    </header>
+
+    <main class="viewer-page">
+        <model-viewer
+            id="viewer"
+            src=""
+            alt="3D модель"
+            auto-rotate
+            camera-controls
+            shadow-intensity="1">
+        </model-viewer>
+        <a id="dl" href="#" download class="btn">Скачать модель</a>
+    </main>
+
+    <script>
+        const p = new URLSearchParams(location.search);
+        const src = p.get('model') || 'models/model1.glb';
+        const name = p.get('name') || 'Модель';
+        document.getElementById('viewer').src = src;
+        document.getElementById('title').innerText = name;
+        document.getElementById('dl').href = src;
+    </script>
+</body>
+</html>
